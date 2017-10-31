@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+{% extends 'blog/base.html' %}
 {% load staticfiles %}
 <html lang="en">
 <head>
@@ -9,17 +10,18 @@
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 </head>
 <body>
-
-    <div class="ui main text container">
-        <div class="column">
-            {% for post in posts %}
-            <div class="ui raised segment">
-                <h1 class="ui header"><a href="">{{ post.title }}</a></h1>
-                <p>published: {{ post.published_date }}</p>
-                <p>{{ post.text|linebreaksbr }}</p>
+    {% block content %}
+        <div class="ui main text container">
+            <div class="column">
+                {% for post in posts %}
+                <div class="ui raised segment">
+                    <h1 class="ui header"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                    <p>Published: {{ post.published_date }}</p>
+                    <p>{{ post.text|linebreaksbr }}</p>
+                </div>
+               {% endfor %}
             </div>
-            {% endfor %}
         </div>
-    </div>
+    {% endblock %}
 </body>
 </html>
