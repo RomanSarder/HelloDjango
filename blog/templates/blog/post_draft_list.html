@@ -1,13 +1,9 @@
 <!DOCTYPE html>
 {% extends 'blog/base.html' %}
-{% load staticfiles %}
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Django blog</title>
-    <link href="https://fonts.googleapis.com/css?family=Lobster&subset=latin,cyrillic" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.2.13/semantic.min.css">
-    <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+    <title>Draft posts</title>
 </head>
 <body>
     {% block content %}
@@ -16,8 +12,8 @@
                 {% for post in posts %}
                 <div class="ui raised segment">
                     <h1 class="ui header"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
-                    <p>Published: {{ post.published_date|date:'d-m-Y' }}</p>
-                    <p>{{ post.text|linebreaksbr }}</p>
+                    <p>Created: {{ post.created_date|date:'d-m-Y' }}</p>
+                    <p>{{ post.text|truncatechars:200 }}</p>
                 </div>
                {% endfor %}
             </div>
