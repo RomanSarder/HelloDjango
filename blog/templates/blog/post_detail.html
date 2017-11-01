@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% extends 'blog/base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    {% block content %}
+         <div class="ui main text container">
+            <div class="column">
+                <div class="ui raised segment">
+                    <h1 class="ui header"><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+                    {% if post.published_date %}
+                        <p>Published: {{ post.published_date }}</p>
+                    {% endif %}
+                    <p>{{ post.text|linebreaksbr }}</p>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>
