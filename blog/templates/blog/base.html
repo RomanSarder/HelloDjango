@@ -10,10 +10,13 @@
 </head>
 <body>
     <div class="ui menu">
+        <a href="{% url 'login' %}" class="item">Login</a>
         {% if user.is_authenticated %}
             <a href="{% url 'post_new' %}" class="item"><i class="plus icon"></i></a>
+            <a href="{% url 'post_draft_list' %}" class="item">Draft list</a>
+            <a class="item">Hello {{ user.username }}</a>
+            <a href="{% url 'logout' %}" class="item">Log out</a>
         {% endif %}
-        <a href="{% url 'post_draft_list' %}" class="item">Draft list</a>
     </div>
     {% block content %}
     {% endblock %}
