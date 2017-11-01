@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% extends 'blog/base.html' %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New post</title>
+</head>
+<body>
+    {% block content %}
+    <div class="ui main text container">
+            <div class="column">
+                <div class="ui raised segment">
+                    <h1 class="ui header">{{ header }} new post</h1>
+                    <form class="ui form" method="POST">{% csrf_token %}
+                        {{ form.non_fields_errors }}
+                        <div class="field">
+                            {{ form.title.errors }}
+                            <label>Title</label>
+                            {{ form.title }}
+                        </div>
+                        <div class="field">
+                            {{ form.text.errors }}
+                            <label>Text</label>
+                            {{ form.text }}
+                        </div>
+                        <button class="ui button" type="submit">Save</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+</body>
+</html>

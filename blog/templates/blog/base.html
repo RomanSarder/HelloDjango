@@ -9,6 +9,9 @@
     <link rel="stylesheet" href="{% static 'css/blog.css' %}">
 </head>
 <body>
+    <div class="ui menu">
+            <a href="{% url 'post_new' %}" class="item"><i class="plus icon"></i></a>
+    </div>
     {% block content %}
     {% endblock %}
 </body>
